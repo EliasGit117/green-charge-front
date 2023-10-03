@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import DefaultLayout from '@/components/layouts/unauth-layout/UnauthLayout.tsx';
 import HomePage from '@/pages/HomePage.tsx';
 import './index.css'
+import './lib/i18n';
+import { ThemeProvider } from '@/components/ThemeSelect/theme-provider.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,12 @@ const router = createBrowserRouter([
   },
 ]);
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RouterProvider router={router}/>
+    </ThemeProvider>
   </React.StrictMode>,
 )
+

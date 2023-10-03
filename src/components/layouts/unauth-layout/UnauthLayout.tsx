@@ -2,24 +2,32 @@ import React, { FC } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { UserCircle, Zap } from 'lucide-react';
 import './styles.css';
+import LanguageSelect from '@/components/LanguageSelect.tsx';
+import { ModeToggle } from '@/components/ThemeSelect/mode-toggle.tsx';
 
 const DefaultLayout: FC = () => {
 
   return (
     <>
       <header className="border-b">
-        <div className="container flex items-center gap-4 py-4 justify-between">
+        <section className="container flex items-center gap-4 py-4 justify-between">
 
-          <div className="flex items-center gap-2">
+          <section className="flex items-center gap-2">
             <Zap className="text-primary" size={18}/>
             <h1 className="text-primary font-semibold">Green charge</h1>
-          </div>
+          </section>
 
 
-          <Link to="auth">
-            <UserCircle strokeWidth={1.5}/>
-          </Link>
-        </div>
+          <section className="flex gap-4 items-center">
+            <ModeToggle/>
+
+            <LanguageSelect/>
+
+            {/*<Link to="auth">*/}
+            {/*  <UserCircle strokeWidth={1.5}/>*/}
+            {/*</Link>*/}
+          </section>
+        </section>
       </header>
 
       <>
