@@ -4,12 +4,11 @@ import HttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
-  .use(HttpBackend)
   .use(LanguageDetector)
+  .use(HttpBackend)
   .use(initReactI18next)
   .init({
     supportedLngs: ['en', 'ru'],
-    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
@@ -18,7 +17,8 @@ i18n
     },
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
+      allowMultiLoading: false
     },
-  });
+  }).then();
 
 export default i18n;

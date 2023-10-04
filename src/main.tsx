@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import DefaultLayout from '@/components/layouts/unauth-layout/UnauthLayout.tsx';
-import HomePage from '@/pages/HomePage.tsx';
+import DefaultLayout from '@/components/layouts/unauth-layout/unauth-layout.tsx';
+import HomePage from '@/pages/home-page.tsx';
 import './index.css'
 import './lib/i18n';
 import { ThemeProvider } from '@/components/ThemeSelect/theme-provider.tsx';
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider storageKey="theme">
       <RouterProvider router={router}/>
     </ThemeProvider>
   </React.StrictMode>,

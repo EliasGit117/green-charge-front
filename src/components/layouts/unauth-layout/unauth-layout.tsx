@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { UserCircle, Zap } from 'lucide-react';
 import './styles.css';
-import LanguageSelect from '@/components/LanguageSelect.tsx';
+import LanguageSelect from '@/components/language-select.tsx';
 import { ModeToggle } from '@/components/ThemeSelect/mode-toggle.tsx';
 
 const DefaultLayout: FC = () => {

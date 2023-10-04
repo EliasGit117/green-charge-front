@@ -7,6 +7,11 @@
   "components": {
     "languageSelect": {
       "selectLanguage": "Выбор языка"
+    },
+    "themeSelect": {
+      "light": "Светлая",
+      "dark": "Темная",
+      "system": "Системная"
     }
   }
 }

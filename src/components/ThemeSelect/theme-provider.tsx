@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+export type Theme = 'dark' | 'light' | 'system';
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -28,30 +28,42 @@ export function ThemeProvider(p: ThemeProviderProps) {
     ...props
   } = p;
 
-  const matchMedia = useRef<MediaQueryList | null>();
   const [theme, setTheme] =
-    useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme)
+    useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
+
+  const onMediaQueryChangeRed = useRef((e: MediaQueryListEvent) => {
+    const docEl = window.document.documentElement;
+    docEl.classList.remove('light', 'dark');
+    docEl.classList.add((e.matches ? 'dark' : 'light'));
+  });
+
+  const removeListener = () => window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .removeEventListener('change', onMediaQueryChangeRed.current);
+
+
+  const addListener = () => window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', onMediaQueryChangeRed.current);
+
+  const isMediaDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
+    const docEl = window.document.documentElement;
 
     if (theme === 'system') {
-      const systemTheme =
-        window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-      root.classList.add(systemTheme);
-      //
-      // matchMedia.current = window.matchMedia('(prefers-color-scheme: dark)');
-      // matchMedia.current .addEventListener(
-      //   'change', e => setTheme(e.matches ? 'dark' : 'light')
-      // );
-
-      return;
+      docEl.classList.add(isMediaDark ? 'dark' : 'light')
+      addListener();
+    } else {
+      removeListener();
+      docEl.classList.remove('light', 'dark');
+      docEl.classList.add(theme);
     }
 
-    root.classList.add(theme)
-  }, [theme])
+    return () => {
+      removeListener();
+    }
+  }, [theme]);
 
   const value = {
     theme,
