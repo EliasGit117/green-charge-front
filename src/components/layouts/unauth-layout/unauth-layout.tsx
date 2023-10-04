@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { UserCircle, Zap } from 'lucide-react';
+import { Outlet } from 'react-router-dom';
+import { Zap } from 'lucide-react';
 import './styles.css';
 import LanguageSelect from '@/components/language-select.tsx';
-import { ModeToggle } from '@/components/ThemeSelect/mode-toggle.tsx';
+import { ModeToggle } from '@/components/theme-select/mode-toggle.tsx';
 
 const DefaultLayout: FC = () => {
 

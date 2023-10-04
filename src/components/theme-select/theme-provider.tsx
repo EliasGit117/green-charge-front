@@ -52,7 +52,7 @@ export function ThemeProvider(p: ThemeProviderProps) {
     const docEl = window.document.documentElement;
 
     if (theme === 'system') {
-      docEl.classList.add(isMediaDark ? 'dark' : 'light')
+      docEl.classList.add(isMediaDark() ? 'dark' : 'light')
       addListener();
     } else {
       removeListener();

@@ -6,7 +6,7 @@ import {
   DropdownMenuRadioGroup, DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Theme, useTheme } from '@/components/ThemeSelect/theme-provider.tsx';
+import { Theme, useTheme } from '@/components/theme-select/theme-provider.tsx';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
