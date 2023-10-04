@@ -50,13 +50,13 @@ export function ThemeProvider(p: ThemeProviderProps) {
 
   useEffect(() => {
     const docEl = window.document.documentElement;
+    docEl.classList.remove('light', 'dark');
 
     if (theme === 'system') {
       docEl.classList.add(isMediaDark() ? 'dark' : 'light')
       addListener();
     } else {
       removeListener();
-      docEl.classList.remove('light', 'dark');
       docEl.classList.add(theme);
     }
 
