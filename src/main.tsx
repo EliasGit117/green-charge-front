@@ -1,32 +1,25 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import DefaultLayout from '@/components/layouts/unauth-layout/unauth-layout.tsx';
-import HomePage from '@/pages/home-page.tsx';
+import { RouterProvider } from 'react-router-dom';
 import './index.css'
 import './lib/i18n';
 import { ThemeProvider } from '@/components/theme-select/theme-provider.tsx';
+import router from './router.tsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <DefaultLayout/>,
-    children: [
-      {
-        path: '',
-        element: <HomePage/>
-      },
-      { path: 'auth', element: <h1>Auth</h1> }
-    ]
-  },
-]);
-
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider storageKey="theme">
-      <RouterProvider router={router}/>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider storageKey="theme">
+        <Suspense>
+          <RouterProvider router={router}/>
+        </Suspense>
+        <Toaster position='bottom-right'/>
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
 

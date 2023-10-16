@@ -1,5 +1,5 @@
 {
-  "title": "Хэллоу to react using react-i18next",
+  "title": "Здесь должен быть заголовок",
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."
@@ -13,5 +13,26 @@
       "dark": "Темная",
       "system": "Системная"
     }
+  },
+  "pages": {
+    "signIn": {
+      "title": "Авторизация",
+      "or": "Или",
+      "signUp": "Зарегестрироваться",
+      "resetPassword": "Сбросить пароль"
+    }
+  },
+  "forms": {
+    "names": {
+      "email": "Эмейл",
+      "password": "Пароль"
+    },
+    "errors": {
+      "required": "Обязательное",
+      "invalidEmail": "Неправильный эмейл"
+    }
+  },
+  "generic": {
+    "submit": "Отправить"
   }
 }

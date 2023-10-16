@@ -1,5 +1,5 @@
 {
-  "title": "Welcome to react using react-i18next",
+  "title": "Here should be title",
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."
@@ -13,5 +13,26 @@
       "dark": "Dark",
       "system": "System"
     }
+  },
+  "pages": {
+    "signIn": {
+      "title": "Sign in",
+      "or": "Or",
+      "signUp": "Sign up",
+      "resetPassword": "Reset password"
+    }
+  },
+  "forms": {
+    "names": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "required": "Required",
+      "invalidEmail": "Invalid email address"
+    }
+  },
+  "generic": {
+    "submit": "Submit"
   }
 }
